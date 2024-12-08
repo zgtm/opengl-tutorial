@@ -1,0 +1,7 @@
+output
+target
+*/target
+Makefile
+*~
+.#*
+*#

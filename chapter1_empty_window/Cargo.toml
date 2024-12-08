@@ -1,0 +1,6 @@
+[package]
+name = "empty_window"
+edition = "2021"
+
+[dependencies]
+glwindow = "0.1"

@@ -1,0 +1,7 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "chapter1_empty_window",
+
+]

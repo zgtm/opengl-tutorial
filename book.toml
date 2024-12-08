@@ -1,0 +1,19 @@
+[book]
+authors = ["Robert Czechowski"]
+language = "en"
+multilingual = false
+src = "book"
+title = "Learn Graphics Programming in OpenGl with Rust"
+description = "This tutorial teaches graphics programming in OpenGl with Rust"
+
+[build]
+build-dir = "output"
+create-missing = false
+
+[preprocessor.chapter-zero]
+levels = [0,1]
+
+[output.html.playground]
+runnable = false
+
+
