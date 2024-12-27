@@ -4,5 +4,6 @@ resolver = "2"
 members = [
     "chapter1_empty_window",
     "chapter2_background",
+    "chapter3_triangle",
 
 ]

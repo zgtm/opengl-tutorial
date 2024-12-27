@@ -12,7 +12,7 @@
 
 - [Creating an Empty Window](./chapter_1.md)
 - [Initialising OpenGL](./chapter_2.md)
-<!-- - [Drawing a Simple Triangle](./chapter_3.md)-->
+- [Drawing a Simple Triangle](./chapter_3.md)
 
 # How to continue
 

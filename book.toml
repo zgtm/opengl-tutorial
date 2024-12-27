@@ -15,5 +15,3 @@ levels = [0,1]
 
 [output.html.playground]
 runnable = false
-
-
