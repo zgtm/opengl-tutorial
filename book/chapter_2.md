@@ -43,26 +43,25 @@ Now we can implement the functions `new`, `draw` and add new function `resize` f
 
 This will need a new import:
 ```rust
-use std::ffi::CString;
+{{#include ../chapter2_background/src/main.rs:2}}
 ```
 
 The `new` function will call `gl::Gl::load_with` and store the result in `Renderer::gl`:
 
 ```rust
-{{#include ../chapter2_background/src/main.rs:22:26}}
-{{#include ../chapter2_background/src/main.rs:38:39}}
+{{#include ../chapter2_background/src/main.rs:21:28}}
 ```
 
 The `draw` function will just render the background for our app. We do that by setting the background colour as RGBA quadruple (0.1, 0.1, 0.1, 0.9), which is a dark gray with slight transparency. After setting the background colour using `ClearColor`, we need to actually draw the background using `Clear`:
 
 ```rust
-{{#include ../chapter2_background/src/main.rs:41:46}}
+{{#include ../chapter2_background/src/main.rs:30:35}}
 ```
 
 And finally the `resize` function will just tell OpenGL about the new size of our OpenGL context:
 
 ```rust
-{{#include ../chapter2_background/src/main.rs:48:52}}
+{{#include ../chapter2_background/src/main.rs:37:41}}
 ```
 
 

@@ -1,6 +1,5 @@
 use std::error::Error;
-use std::ffi::{CStr, CString};
-use std::ops::Deref;
+use std::ffi::CString;
 use glwindow::AppControl;
 use glwindow::event::{WindowEvent, KeyEvent};
 use glwindow::keyboard::{Key, NamedKey::Escape};
@@ -25,16 +24,6 @@ impl glwindow::AppRenderer for Renderer {
             gl_display.get_proc_address(symbol.as_c_str()).cast()
         });
 
-        // if let Some(renderer) = get_gl_string(&gl, gl::RENDERER) {
-        //     println!("Running on {}", renderer.to_string_lossy());
-        // }
-        // if let Some(version) = get_gl_string(&gl, gl::VERSION) {
-        //     println!("OpenGL Version {}", version.to_string_lossy());
-        // }
-        // if let Some(shaders_version) = get_gl_string(&gl, gl::SHADING_LANGUAGE_VERSION) {
-        //     println!("Shaders version on {}", shaders_version.to_string_lossy());
-        // }
-
         Self { gl }
     }
 
@@ -51,21 +40,6 @@ impl glwindow::AppRenderer for Renderer {
         }
     }
 }
-
-// impl Deref for Renderer {
-//     type Target = gl::Gl;
-
-//     fn deref(&self) -> &Self::Target {
-//         &self.gl
-//     }
-// }
-
-// fn get_gl_string(gl: &gl::Gl, variant: gl::types::GLenum) -> Option<&'static CStr> {
-//     unsafe {
-//         let s = gl.GetString(variant);
-//         (!s.is_null()).then(|| CStr::from_ptr(s.cast()))
-//     }
-// }
 
 fn handle_event(_app_state: &mut State, event: WindowEvent)
                 -> Result<AppControl, Box<dyn Error>> {
