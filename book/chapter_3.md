@@ -38,7 +38,7 @@ Each of these three properties will just be an integer (`GLUint`) that is meant 
 ### Definition of shaders
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:28:42}}
+{{#include ../chapter3_triangle/src/main.rs:29:43}}
 ```
 
 For this we need to import `CStr` from `std::ffi` (or use `std::ffi::CStr` directly):
@@ -49,19 +49,19 @@ use std::ffi::CStr;
 ### New code in AppRenderer::new
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:47:101}}
+{{#include ../chapter3_triangle/src/main.rs:48:102}}
 ```
 
 ### New code in AppRenderer::draw
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:103:114}}
+{{#include ../chapter3_triangle/src/main.rs:104:115}}
 ```
 
 ### Implementation of Drop for AppRenderer
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:123:131}}
+{{#include ../chapter3_triangle/src/main.rs:124:132}}
 ```
 
 ## Full code
