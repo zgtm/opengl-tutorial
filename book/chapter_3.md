@@ -55,37 +55,102 @@ As mentioned above, we will need two shaders:
   Since we are starting with a simple single-color triangle, our fragment shader will just output a constant colour.
   The color is given as a 4-dimensional vector describing a point in the RGBA-space. So the first coordinate sets a _red_-value between 0.0 and 1.0, the second _green_, the third _blue_, and finally the fourth value gives an _alpha_-value, also called “opacity”–this describes how non-transparent the colour is on a scale from 0.0 (completeley transparent) to 1.0 (completely opaque).
 
-I choose a nice orange, here, with full red, half green, one fifth of blue and full opacity \\((r=1.0, g=0.5, b=0.2, a=1.0)\\).
+I choose a nice orange, here, with no red, 0.7 green, 0.6 fifth of blue and full opacity \\((r=0.0, g=0.6, b=0.7, a=1.0)\\).
 Thus our shaders look like this:
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:29:43}}
+{{#include ../chapter3_triangle/src/main.rs:28:43}}
 ```
-
-For this we need to import `CStr` from `std::ffi` (or use `std::ffi::CStr` directly):
+The shaders need to be given to OpenGL as null-terminated strings (though we could also pass them as a string with length). For this we need to import `CStr` from `std::ffi` (or use `std::ffi::CStr` directly):
 ```rust
 use std::ffi::CStr;
 ```
 
-### New code in AppRenderer::new
+As you can see, the shaders are their own small program written in a dialect of C (called OpenGL Shading Language or short GLSL). The first line sets the version of GLSL we want to use–in our case we're using 4.1: `#version 330 core`.
+
+Next we can define input (`in`) and output (`out`) parameters.
+
+For our vertex shader that is the position that we get from our vertex buffer as input: `in vec4 position`. The output is an [OpenGL built-in output variable](https://www.khronos.org/opengl/wiki/Built-in_Variable_(GLSL)) `vec4 gl_Position`.
+
+Our fragment shader gets no input as we just want to draw a single colour, but we have to define our output variable which outputs this colour: `out vec4 color`. (Note that on some platforms you don't have to define the output variable, since there's a built-in called `gl_FragColor`. But since it's not working on all platforms, we will just define our own output!)
+
+### Compiling and Loading our Shaders
+
+Now we have to compile and load our shaders and tell OpenGL about our vertex buffers. All of this happens in `Renderer::new`.
+
+#### Compiling the Shaders
+
+in `Renderer::new`, right after the call to `gl::Gl::load_with`, we will create our shaders using, `gl.CreateShader`, `gl.ShaderSource` and `gl.CompileShader`:
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:48:102}}
+{{#include ../chapter3_triangle/src/main.rs:54:60}}
 ```
 
-### New code in AppRenderer::draw
+Now we can combine both shaders into what OpenGL calls a "program". Afterwards we can delete the shaders again, as their compilation product will live on in the programm.
+
+```rust
+{{#include ../chapter3_triangle/src/main.rs:62:72}}
+```
+
+Now what's left to do is to create our Vertex Array Object (VAO) and our Vertex Buffer Object (VBO).
+
+First the VAO. Not much to do here:
+
+```rust
+{{#include ../chapter3_triangle/src/main.rs:74:76}}
+```
+
+Because we have bound the VAO using `gl.BindVertexArray(vao)`, the VBO we will create now will live on our VAO:
+
+```rust
+{{#include ../chapter3_triangle/src/main.rs:78:86}}
+```
+
+And finally we have to tell our program what input variables should come from which part of our buffer:
+
+```rust
+{{#include ../chapter3_triangle/src/main.rs:88:97}}
+```
+
+
+Finally, we need to modify the return value to contain our program, VAO and VBO.
+
+```rust
+{{#include ../chapter3_triangle/src/main.rs:99}}
+```
+
+
+### New code in Renderer::draw
 
 ```rust
 {{#include ../chapter3_triangle/src/main.rs:104:115}}
 ```
 
-### Implementation of Drop for AppRenderer
+### Cleanup of OpenGL Objects
+
+Last but not least, there is some cleanup to do. We do not really *have* to do it, but we don't want our programm to leak any memory and OpenGL objects, especially when it becomes bigger and we might create more than one OpenGL programm.
+
+For this, we implement the `Drop` trait for `Renderer` so the cleanup gets done automatically when our renderer is dropped by `glwindow`, either because of the program exit or because we it needed to recreate the OpenGL context.
 
 ```rust
 {{#include ../chapter3_triangle/src/main.rs:124:132}}
 ```
 
+### Run the Code
+
+Let the code run, and if everything works it should look like this:
+
+<img src="triangle.png" style="width: 50%; margin-left: 25%;" alt="Our first triangle">
+
+## Play Around With It
+
+Change the colour of the triangle and the background to your liking.
+
+If your platform supports transparency, play around with different opacity values for both the background and the triangle! What happens, when you set the background completely opaque, but the triangle to transparent or semi-transparent?
+
 ## Full code
+
+As always, here comes the full code of everything we've done in all the chapters before and this chapter (though some things might just reference previous chapters):
 
 ### Cargo.toml
 
