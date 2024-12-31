@@ -16,6 +16,7 @@ levels = [0,1]
 
 [output.html]
 default-theme = "rust"
+mathjax-support = true
 
 [output.html.playground]
 runnable = false

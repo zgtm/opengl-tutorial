@@ -20,7 +20,7 @@ pub struct Renderer {
 
 #[rustfmt::skip]
 static VERTEX_DATA: [f32; 9] = [
-    -0.5, -0.5,  1.0,
+    -0.5, -0.5,  0.0,
      0.0,  0.5,  0.0,
      0.5, -0.5,  0.0,
 ];
