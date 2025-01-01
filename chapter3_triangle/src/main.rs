@@ -25,18 +25,18 @@ static VERTEX_DATA: [f32; 9] = [
      0.5, -0.5,  0.0,
 ];
 
-const VERTEX_SHADER_SOURCE: &CStr = c"#version 330 core
+
+const VERTEX_SHADER_SOURCE: &CStr = c"#version 410 core
 in vec3 position;
 
-void main()
-{
+void main() {
     gl_Position = vec4(position, 1.0f);
 }
 ";
 
-const FRAGMENT_SHADER_SOURCE: &CStr = c"#version 330 core
-void main()
-{
+const FRAGMENT_SHADER_SOURCE: &CStr = c"#version 410 core
+
+void main() {
     gl_FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
 }
 ";
