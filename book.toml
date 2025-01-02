@@ -15,7 +15,7 @@ create-missing = false
 levels = [0,1]
 
 [output.html]
-default-theme = "rust"
+default-theme = "navy"
 mathjax-support = true
 
 [output.html.playground]
