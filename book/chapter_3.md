@@ -148,6 +148,8 @@ Change the colour of the triangle and the background to your liking.
 
 If your platform supports transparency, play around with different opacity values for both the background and the triangle! What happens, when you set the background completely opaque, but the triangle to transparent or semi-transparent?
 
+Try what happens when you move one of the triangle vertices in the z-direction? (E.g. \\(z=2.0\\))
+
 ## Full code
 
 As always, here comes the full code of everything we've done in all the chapters before and this chapter (though some things might just reference previous chapters):
