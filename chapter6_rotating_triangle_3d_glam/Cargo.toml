@@ -1,0 +1,10 @@
+[package]
+name = "rotating_triangle_3d_glam"
+edition = "2021"
+
+[dependencies]
+glam = "0.29.2"
+glwindow = "0.1"
+
+[build-dependencies]
+gl_generator = "0.14"
