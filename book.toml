@@ -18,5 +18,8 @@ levels = [0,1]
 default-theme = "navy"
 mathjax-support = true
 
+[output.html.code]
+default-hidelines = false
+
 [output.html.playground]
 runnable = false

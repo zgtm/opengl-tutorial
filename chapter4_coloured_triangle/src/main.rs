@@ -19,12 +19,14 @@ pub struct Renderer {
 }
 
 static VERTEX_DATA: [f32; 18] = [
-    -0.5, -0.5,  0.0,    1.0, 0.0, 0.0,
-     0.0,  0.5,  0.0,    0.0, 1.0, 0.0,
-     0.5, -0.5,  0.0,    0.0, 0.0, 1.0,
+    -0.5, -0.5,  0.0,     0.8,  0.8,  0.0,
+     0.0,  0.5,  0.0,     0.0,  0.8,  0.8,
+     0.5, -0.5,  0.0,     0.8,  0.0,  0.8,
 ];
 
-const VERTEX_SHADER_SOURCE: &CStr = c"#version 410 core
+const VERTEX_SHADER_SOURCE: &CStr = c"
+#version 410 core
+
 in vec3 position;
 in vec3 color;
 
@@ -36,7 +38,9 @@ void main() {
 }
 ";
 
-const FRAGMENT_SHADER_SOURCE: &CStr = c"#version 410 core
+const FRAGMENT_SHADER_SOURCE: &CStr = c"
+#version 410 core
+
 out vec4 color;
 
 in vec3 v_color;

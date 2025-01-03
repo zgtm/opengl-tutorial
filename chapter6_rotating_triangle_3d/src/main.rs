@@ -30,8 +30,8 @@ static VERTEX_DATA: [f32; 18] = [
      0.5, -0.5,  0.0,     0.8,  0.0,  0.8,
 ];
 
-const VERTEX_SHADER_SOURCE: &CStr =
-c"#version 410 core
+const VERTEX_SHADER_SOURCE: &CStr = c"
+#version 410 core
 
 uniform mat3 rotation;
 uniform mat4 perspective;
