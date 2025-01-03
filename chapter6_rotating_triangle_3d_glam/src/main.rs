@@ -1,5 +1,6 @@
 use std::error::Error;
 use std::ffi::{CStr, CString};
+use std::time::Instant;
 use glwindow::AppControl;
 use glwindow::event::{WindowEvent, KeyEvent};
 use glwindow::keyboard::{Key, NamedKey::Escape};
@@ -11,7 +12,7 @@ pub mod gl {
 }
 
 pub struct State {
-    t: f32,
+    begin: Instant,
 }
 
 pub struct Renderer {
@@ -142,10 +143,10 @@ impl glwindow::AppRenderer for Renderer {
     }
 
     fn draw(&self, state: &mut State) {
-        state.t += 0.2 * 2.0 * std::f32::consts::PI / 60.0;
-        let t = state.t;
+        let time = Instant::now().duration_since(state.begin).as_millis() % 5000;
+        let phi = (time as f32) / 5000.0 * 2.0 * std::f32::consts::PI;
 
-        let rotation = glam::Mat3::from_rotation_y(t);
+        let rotation = glam::Mat3::from_rotation_y(phi);
         let perspective = glam::Mat4::perspective_rh(1.0, 1.0, 0.5, 10.0);
 
         unsafe {
@@ -197,7 +198,7 @@ fn handle_event(_app_state: &mut State, event: WindowEvent)
 
 fn main() -> Result<(), Box<dyn Error>> {
     let app_state = State{
-        t: 0.0
+        begin: Instant::now(),
     };
     glwindow::Window::<_,_,Renderer>::new()
         .run(app_state, handle_event as glwindow::HandleFn<_>)

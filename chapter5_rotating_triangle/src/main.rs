@@ -1,5 +1,6 @@
 use std::error::Error;
 use std::ffi::{CStr, CString};
+use std::time::Instant;
 use glwindow::AppControl;
 use glwindow::event::{WindowEvent, KeyEvent};
 use glwindow::keyboard::{Key, NamedKey::Escape};
@@ -11,7 +12,7 @@ pub mod gl {
 }
 
 pub struct State {
-    t: f32,
+    begin: Instant,
 }
 
 pub struct Renderer {
@@ -132,16 +133,16 @@ impl glwindow::AppRenderer for Renderer {
     }
 
     fn draw(&self, state: &mut State) {
-        state.t += 0.2 * 2.0 * std::f32::consts::PI / 60.0;
-        let t = state.t;
+        let time = Instant::now().duration_since(state.begin).as_millis() % 5000;
+        let phi = (time as f32) / 5000.0 * 2.0 * std::f32::consts::PI;
 
-        let rotation: [f32; 9]  = [ t.cos(),      0.0,  t.sin(),
-                                        0.0,      1.0,      0.0,
-                                   -t.sin(),      0.0,  t.cos()];
+        let rotation: [f32; 9]  = [ phi.cos(),      0.0,  phi.sin(),
+                                        0.0,        1.0,        0.0,
+                                   -phi.sin(),      0.0,  phi.cos()];
 
         unsafe {
             self.gl.UseProgram(self.program);
-            self.gl.UniformMatrix3fv(self.rotation, 1, 0, rotation.as_ptr());
+            self.gl.UniformMatrix3fv(self.rotation, 1, 1, rotation.as_ptr());
 
             self.gl.BindVertexArray(self.vao);
             self.gl.BindBuffer(gl::ARRAY_BUFFER, self.vbo);
@@ -187,7 +188,7 @@ fn handle_event(_app_state: &mut State, event: WindowEvent)
 
 fn main() -> Result<(), Box<dyn Error>> {
     let app_state = State{
-        t: 0.0
+        begin: Instant::now(),
     };
     glwindow::Window::<_,_,Renderer>::new()
         .run(app_state, handle_event as glwindow::HandleFn<_>)
