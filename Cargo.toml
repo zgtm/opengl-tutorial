@@ -6,5 +6,6 @@ members = [
     "chapter2_background",
     "chapter3_triangle",
     "chapter4_coloured_triangle",
+    "chapter5_rotating_triangle",
 
 ]

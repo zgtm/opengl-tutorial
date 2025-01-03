@@ -1,0 +1,9 @@
+[package]
+name = "rotating_triangle"
+edition = "2021"
+
+[dependencies]
+glwindow = "0.1"
+
+[build-dependencies]
+gl_generator = "0.14"
