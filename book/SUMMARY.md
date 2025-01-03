@@ -14,6 +14,9 @@
 - [Initialising OpenGL](./chapter_2.md)
 - [Drawing a Simple Triangle](./chapter_3.md)
 - [Drawing a Triangle with Colours](./chapter_4.md)
+- [Drawing a Rotating Triangle](./chapter_5.md)
+- [Drawing a 3D-Looking Rotating Triangle](./chapter_6.md)
+
 
 # How to continue
 
