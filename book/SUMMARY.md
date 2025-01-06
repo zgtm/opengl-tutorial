@@ -20,8 +20,8 @@
 
 # How to continue
 
-- [Code structure](./code.md)
-- [What comes next](./next.md)
+<!--- [Code structure](./code.md)
+- [What comes next](./next.md)-->
 - [Website and book recommondations](./books.md)
 
 <!--# Helpful Math
