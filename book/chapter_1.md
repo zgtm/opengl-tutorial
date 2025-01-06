@@ -1,4 +1,4 @@
-# Creating an Empty Window
+# Creating and Displaying an Empty Window
 
 In this chapter, we will start by
 - setting up our project
@@ -6,6 +6,8 @@ In this chapter, we will start by
 - handle events such as key presses
 
 At the end of this chapter, as in any other chapter, you will find the complete code for the chapter. So if something does not seem to work you can check there for things that might look different in your code.
+
+Be sure to have [Rust installed](setup.md) and all [necessary libraries](setup.md) present on your system.
 
 ## Initialising a New Rust Project
 
@@ -16,6 +18,8 @@ cargo new opengl_project
 ```
 
 We will use the crate `glwindow` which is a very small wrapper-crate around `glutin` and `winit`. It simplifies the usage of `winit` but thus does not offer all the flexibility (such as creating multiple windows, non-resizeable windows and the-like). If you want to have more control about creating your windows and OpenGl contexts, I recommend having a peek at [the outlook chapter of this tutorial](next.md).
+
+<!-- We will use the crate `glwindow` which is a very small wrapper-crate around `winit` and `glutin`. It simplifies the usage of `winit` but thus does not offer all the flexibility (such as creating multiple windows, non-resizeable windows and the-like). If you want you can later replace `glwindow` by your own code. Check the chapter “[What comes next](next.md)” for pointers how to use `winit` and `glutin` directly. -->
 
 Add `glwindow` to your `Crates.toml`, e.g. by running:
 
@@ -30,7 +34,7 @@ Now open the Rust file `src/main.rs`. First of all we're going to need to import
 {{#include ../chapter1_empty_window/src/main.rs:1:4}}
 ```
 
-## Some Structs and A Function
+## Our State, Renderer and Event Handler
 
 Next we will define two struct—for now empty: `AppState` and `AppRenderer`. Those two will be responsible for handling the state of our OpenGL app and the OpenGL rendering respectively.
 
@@ -70,7 +74,7 @@ cargo run
 
 You should see something like this:
 
-<img src="first_window_transparent.png" style="width: 50%" alt="Our first window">
+<img src="first_window_transparent.png" style="width: 50%; margin-left: 25%;" alt="Our first window">
 
 <div class="warning">
 Don't worry that it might seem like the window can not be closed. Just press `Ctrl-C` in your terminal or stop execution of the programm in your IDE to quit the programm and thus also close the window! We'll come to that in a minute!
@@ -78,7 +82,7 @@ Don't worry that it might seem like the window can not be closed. Just press `Ct
 
 Maybe the window is just completely transparent and shows what's behind it or maybe when you move the window, it will start showing the solitair effect that you might know from frozen windows. It depends on whether your platform supports transparent windows:
 
-<img src="first_window.png" style="width: 50%" alt="Our first window">
+<img src="first_window.png" style="width: 50%; margin-left: 25%;" alt="Our first window">
 
 Either way, this is because we don't draw anything in our app yet! So what was on the screen before, will still be shown inside of our window.
 
@@ -131,11 +135,12 @@ Here is a definition of `handle_event` that allows the user to close the window 
 
 Try if you can make the app close itself with another key than the escape-key. For example the user could want to press 'Q' to quit the app. For the identification of the keys you can follow [the glwindown crate documentation ](https://docs.rs/glwindow/0.1.0/glwindow/keyboard/enum.Key.html).
 
-    E.g. for the key 'Q' you can check whether `logical_key` has the value `Key::Character("q".into())`.
+E.g. for the key 'Q' you can check whether `logical_key` has the value `Key::Character("q".into())`.
 
 
 ## The Full Code for This Chapter
 
+At the end of each chapter, I will append the full code of the chapter so you can copy and paste everything to try it out without collecting every tiny bit in all the chapters before. If anything in seems mysterious, though, I recommend checking the chapter for the introduction of this code, though. ;)
 
 ### Cargo.toml
 ```rust

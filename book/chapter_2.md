@@ -85,7 +85,7 @@ Now we have everything prepared to draw our first triangle in the [next chapter]
 
 ## Play Around With It
 
-There is not too much we can do right now but definitely try two things:
+Definitely try two things:
 
 - Change the colour of the background.
 - Change the amount of transparency.
