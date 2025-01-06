@@ -162,11 +162,14 @@
 }
 
 .navy {
-    --bg: #20242f;
-    --fg: #bcbdd0;
+    --bg: #282d3f;
+    /*--fg: #bcbdd0;*/
+    --fg: #c8c9db;
 
-    --sidebar-bg: #282d3f;
-    --sidebar-fg: #c8c9db;
+    /*--sidebar-bg: #282d3f;*/
+    --sidebar-bg: #202638;
+    /*--sidebar-fg: #c8c9db;*/
+    --sidebar-fg: #bcbdd0;
     --sidebar-non-existant: #505274;
     --sidebar-active: #2b79a2;
     --sidebar-spacer: #2d334f;
