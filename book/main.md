@@ -6,7 +6,7 @@ To start reading, use your arrow keys ([←], [→]), the page turners on the le
 
 You can find the complete source code for everything in this tutorial on [github](https://github.com/zgtm/opengl-tutorial/).
 
-If you stumble upon any problem, or if you have something else you want to tell me, write me at <span id="openglatzgtmeu">opengl[ AT ]zgtm.eu</span>.
+If you stumble upon any problem, or if you have something else you want to tell me, feel free to open an issue or PR at github, or write me an email to <span id="openglatzgtmeu">opengl[ AT ]zgtm.eu</span>.
 
 <script>
 openglatzgtmeu = "opengl" + String.fromCharCode(64) + "zgtm.eu";
@@ -18,6 +18,8 @@ This tutorial is still incomplete and currently being worked on.
 – zgtm @ January 2025
 
 ## Jump Straight In
+
+Start by [installing Rust](setup.md) or click on one of the following images to jump directly to the corresponding chapter:
 
 [<img style="width: 40%; margin: 0.5em 3%;" alt="Our first window"                         src="first_window_transparent.png"      >](chapter_1.md)
 [<img style="width: 40%; margin: 0.5em 3%;" alt="Our first window with background"         src="background.png"                    >](chapter_2.md)
