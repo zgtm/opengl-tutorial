@@ -133,7 +133,7 @@ Last but not least, there is some cleanup to do. We do not really *have* to do i
 For this, we implement the `Drop` trait for `Renderer` so the cleanup gets done automatically when our renderer is dropped by `glwindow`, either because of the program exit or because we it needed to recreate the OpenGL context.
 
 ```rust
-{{#include ../chapter3_triangle/src/main.rs:126:135}}
+{{#include ../chapter3_triangle/src/main.rs:127:135}}
 ```
 
 ### Run the Code

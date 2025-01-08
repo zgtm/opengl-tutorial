@@ -25,7 +25,7 @@ Now, add a new file called `build.rs` and add the following contents:
 Add the following lines to your `main.rs` to make the OpenGL bindings available to your code:
 
 ```rust
-{{#include ../chapter2_background/src/main.rs:8:12}}
+{{#include ../chapter2_background/src/main.rs:7:11}}
 ```
 
 
@@ -36,7 +36,7 @@ Now, let's initialise our OpenGL renderer.
 In `main.rs`, our struct `Renderer` needs to store a `Gl` handle:
 
 ```rust
-{{#include ../chapter2_background/src/main.rs:15:17}}
+{{#include ../chapter2_background/src/main.rs:14:16}}
 ```
 
 Now we can implement the functions `new`, `draw` and add new function `resize` for the trait implementation of `glwindow::AppRenderer` for `Renderer`.
