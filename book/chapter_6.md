@@ -1,5 +1,43 @@
 # Drawing a 3D-Looking Rotating Triangle
 
+```rust
+{{#include ../chapter6_rotating_triangle_3d/src/main.rs:18:25}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d/src/main.rs:33:53}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d/src/main.rs:137:138}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d/src/main.rs:141:141}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d/src/main.rs:153:164}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d/src/main.rs:168:169}}
+```
+
+
+
+## Using a Math Library
+
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:149:150}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:155:155}}
+```
+
+
 ## Full code
 
 As always, here comes the full code of everything we've done in all the chapters before and this chapter (though some things might just reference previous chapters):
