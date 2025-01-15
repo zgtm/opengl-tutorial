@@ -22,6 +22,7 @@ pub struct Renderer {
     rotation: gl::types::GLint,
     perspective: gl::types::GLint,
     gl: gl::Gl,
+    viewport_size: (i32, i32),
 }
 
 static VERTEX_DATA: [f32; 18] = [
@@ -138,7 +139,7 @@ impl glwindow::AppRenderer for Renderer {
                 gl.GetUniformLocation(program, c"perspective".as_ptr() as *const _);
 
 
-            Self { program, vao, vbo, rotation, perspective, gl }
+            Self { program, vao, vbo, rotation, perspective, gl, viewport_size: (0, 0) }
         }
     }
 
@@ -147,7 +148,8 @@ impl glwindow::AppRenderer for Renderer {
         let phi = (time as f32) / 5000.0 * 2.0 * std::f32::consts::PI;
 
         let rotation = glam::Mat3::from_rotation_y(phi);
-        let perspective = glam::Mat4::perspective_rh(1.0, 1.0, 0.5, 10.0);
+        let aspect_ratio = self.viewport_size.0 as f32 / self.viewport_size.1 as f32;
+        let perspective = glam::Mat4::perspective_rh_gl(1.0, aspect_ratio, 0.5, 10.0);
 
         unsafe {
             self.gl.UseProgram(self.program);
@@ -164,6 +166,7 @@ impl glwindow::AppRenderer for Renderer {
     }
 
     fn resize(&mut self, width: i32, height: i32) {
+        self.viewport_size = (width, height);
         unsafe {
             self.gl.Viewport(0, 0, width, height);
         }

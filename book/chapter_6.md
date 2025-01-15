@@ -25,17 +25,29 @@
 ```
 
 
-
 ## Using a Math Library
 
 
 ```rust
-{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:149:150}}
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:18:26}}
 ```
 
 ```rust
-{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:155:155}}
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:142:142}}
 ```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:151:152}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:156:158}}
+```
+
+```rust
+{{#include ../chapter6_rotating_triangle_3d_glam/src/main.rs:169:169}}
+```
+
 
 
 ## Full code
