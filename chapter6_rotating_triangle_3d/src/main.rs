@@ -16,12 +16,12 @@ pub struct State {
 }
 
 pub struct Renderer {
+    gl: gl::Gl,
     program: gl::types::GLuint,
     vao: gl::types::GLuint,
     vbo: gl::types::GLuint,
     rotation: gl::types::GLint,
     perspective: gl::types::GLint,
-    gl: gl::Gl,
 }
 
 static VERTEX_DATA: [f32; 18] = [
@@ -138,7 +138,7 @@ impl glwindow::AppRenderer for Renderer {
                 gl.GetUniformLocation(program, c"perspective".as_ptr() as *const _);
 
 
-            Self { program, vao, vbo, rotation, perspective, gl }
+            Self { gl, program, vao, vbo, rotation, perspective }
         }
     }
 

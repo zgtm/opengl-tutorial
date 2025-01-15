@@ -12,10 +12,10 @@ pub mod gl {
 
 pub struct State {}
 pub struct Renderer {
+    gl: gl::Gl,
     program: gl::types::GLuint,
     vao: gl::types::GLuint,
     vbo: gl::types::GLuint,
-    gl: gl::Gl,
 }
 
 static VERTEX_DATA: [f32; 18] = [
@@ -118,7 +118,7 @@ impl glwindow::AppRenderer for Renderer {
             );
             gl.EnableVertexAttribArray(color_attrib as gl::types::GLuint);
 
-            Self { program, vao, vbo, gl }
+            Self { gl, program, vao, vbo }
         }
     }
 
