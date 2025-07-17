@@ -88,6 +88,7 @@ Now, we can run our code and it should look something like this:
 <img src="coloured_triangle.png" style="width: 50%; margin-left: 25%;" alt="Our first coloured triangle">
 
 A nice colourful triangle!
+
 ## Play Around With It
 
  - Instead of our cyan-magenta-yellow-triangle, try to make a classical RGB triangle where one vertex is just fully red, one vertex is just fully green and one vertex is just fully blue:
