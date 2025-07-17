@@ -33,7 +33,13 @@ Each of these three properties will just be an integer (`GLUint`) that is meant 
 
 This will be very easy, we just define a simple static array of all our vertex coordinates for our triangle.
 
-This will just be a single array consisting of \\([x_1, y_1, z_1, x_2, y_2, z_2, …]\\). So \\((x_1, y_1, z_1)\\) will describe the \\(x\\)-, \\(y\\)- and \\(z\\)-coordinate of our first point, respectively, \\((x_2, y_2, z_2)\\) will describe the \\(x\\)-, \\(y\\)- and \\(z\\)-coordinate of our second point, respectively, and so on. And since we want to describe a triangle, _“and so on”_ only means _one more point_.
+This will just be a single array consisting of:
+
+\\([x_1, y_1, z_1, \\)<br>
+&nbsp;\\( x_2, y_2, z_2, \\)<br>
+&nbsp;\\(…]\\)
+
+So \\((x_1, y_1, z_1)\\) will describe the \\(x\\)-, \\(y\\)- and \\(z\\)-coordinate of our first point, \\((x_2, y_2, z_2)\\) will describe the \\(x\\)-, \\(y\\)- and \\(z\\)-coordinate of our second point, and so on.
 
 ```rust
 {{#include ../chapter3_triangle/src/main.rs:21:26}}
